@@ -1,0 +1,149 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+        <div class="col-2 mr-5">  
+            <div class="row">
+              <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Cliente</button>  
+             </div>
+             <div class="row">
+               <button class="btn btn-secondary" (click)="showeditform()">Editar Cliente</button>  
+              </div>
+           </div>
+
+
+        <div class="col-4">
+
+    <form *ngIf="showedifform" #clientsform="ngForm" (ngSubmit)="EditClient(clientsform)">
+        <input type="hidden" name="id" #idclient="ngModel" [(ngModel)]="clientservices.selectedclient.id">
+         <div class="form-group ">
+        <label for="namecli">Nombre Cliente</label>
+        <input type="text" class="form-control" placeholder="Nombre" name="nombre" #namecli="ngModel" [(ngModel)]="clientservices.selectedclient.nombre">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="lastnamecli">Apellido Cliente</label>
+        <input type="text" class="form-control" placeholder="Apellido" name="apellido" #lastnamecli="ngModel" [(ngModel)]="clientservices.selectedclient.apellido">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group">
+        <label for="passcli">Contraseña Cliente (No se puede ingresar sin contraseña)</label>
+        <input type="password" class="form-control" placeholder="Password" name="contraseña" #passcli="ngModel" [(ngModel)]="clientservices.selectedclient.contrasenia">
+       <small id="emailHelp" class="form-text text-muted">No se puede ingresar sin contraseña.</small> 
+      </div>
+
+      <div class="form-group ">
+        <label for="correocli">Correo Cliente</label>
+        <input type="text" class="form-control" placeholder="ID Funcion" name="correo" #correocli="ngModel" [(ngModel)]="clientservices.selectedclient.correo">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="telefonocli">Telefono Cliente</label>
+        <input type="text" class="form-control" placeholder="Telefono" name="telefono" #telefonocli="ngModel" [(ngModel)]="clientservices.selectedclient.telefono">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      
+
+      <div class="form-group ">
+        <label for="direccionCli">Direccion</label>
+        <input type="text" class="form-control" placeholder="Direccion" name="direccion" #direccionCli="ngModel" [(ngModel)]="clientservices.selectedclient.direccion">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <input type="hidden" name="ordenVenta" #ordenVentaEmp="ngModel" [(ngModel)]="clientservices.selectedclient.ordenVenta">
+
+            
+    
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary">Submit</button>  
+        </div>
+    
+        <div class="col">  
+          <button type="button" class="btn btn-danger" (click)="deleteclient(clientsform, idclient.value)" >Delete</button> 
+        </div>
+        
+    </div>
+
+    
+  </form>
+
+  <form *ngIf="showaddform" #clientsAddform="ngForm" (ngSubmit)="AddnewClient(clientsAddform)">
+        <div class="form-group ">
+    <label for="namecli">Nombre Cliente</label>
+    <input type="text" class="form-control" placeholder="Nombre" name="nombre" #namecli="ngModel" [(ngModel)]="clientservices.selectedclient.nombre">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="lastnamecli">Apellido Cliente</label>
+    <input type="text" class="form-control" placeholder="Apellido" name="apellido" #lastnamecli="ngModel" [(ngModel)]="clientservices.selectedclient.apellido">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group">
+    <label for="passcli">Contraseña Cliente (No se puede ingresar sin contraseña)</label>
+    <input type="password" class="form-control" placeholder="Password" name="contraseña" #passcli="ngModel" [(ngModel)]="clientservices.selectedclient.contrasenia">
+   <small id="emailHelp" class="form-text text-muted">No se puede ingresar sin contraseña.</small>
+  </div>
+
+  <div class="form-group ">
+    <label for="correocli">Correo Cliente</label>
+    <input type="text" class="form-control" placeholder="ID Funcion" name="correo" #correocli="ngModel" [(ngModel)]="clientservices.selectedclient.correo">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="telefonocli">Telefono Cliente</label>
+    <input type="text" class="form-control" placeholder="Telefono" name="telefono" #telefonocli="ngModel" [(ngModel)]="clientservices.selectedclient.telefono">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  
+
+  <div class="form-group ">
+    <label for="direccionCli">Direccion</label>
+    <input type="text" class="form-control" placeholder="Direccion" name="direccion" #direccionCli="ngModel" [(ngModel)]="clientservices.selectedclient.direccion">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <input type="hidden" name="ordenVenta" #ordenVentaEmp="ngModel" [(ngModel)]="clientservices.selectedclient.ordenVenta">
+
+        
+
+  <div class="row">
+    <div class="col">  
+      <button type="submit" class="btn btn-primary">Submit</button>  
+    </div>
+
+   
+    
+</div>
+
+
+</form>
+
+
+
+</div>
+
+<div class="col-4">
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Clientes</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option *ngFor="let client of allclients" (click)="addtoform(client)">
+            {{client.nombre}} {{client.apellido}} {{client.telefono}}
+        </option>
+        
+        </select>
+    </div>
+
+
+</div>
+</div>
+</div>
+

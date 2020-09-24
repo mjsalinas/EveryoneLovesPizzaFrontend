@@ -1,0 +1,116 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+
+      <div class="col-2 mr-5">  
+        <div class="row">
+          <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Inventario</button>  
+         </div>
+         <div class="row">
+           <button class="btn btn-secondary" (click)="showeditform()">Editar Inventario</button>  
+          </div>
+       </div>
+
+
+<div class="col-4">
+  <div class="form-group" >
+    <label for="ProveedorSelect">Nombre de Insumo</label>
+    <select  multiple class="form-control" id="ProveedorSelect" >
+      <option *ngFor="let stock of allinsumos" (click)="addInsumoID(stock.id)">
+        {{stock.nombres}}
+      </option>
+      
+    </select>
+  </div>
+
+  <form *ngIf="showedifform" #inventarioform="ngForm">
+    
+    <div class="form-group ">
+      <label for="idinventario">ID Inventario</label>
+      <input type="text" class="form-control" placeholder="ID Inventario" name="id" #idinventario [(ngModel)]="serviciosInventario.selectedinventario.id">
+     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <input type="hidden" name="idinsumos" #idinsumoInventario="ngModel" [(ngModel)]="serviciosInventario.selectedinventario.idinsummos">
+  
+
+    <div class="form-group ">
+        <label for="CantidadInsumo1">Cantidad Insumo</label>
+        <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" #cantidadInvent [(ngModel)]="serviciosInventario.selectedinventario.cantidad">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      
+      <input type="hidden" name="idinsumosNavigation" #idinsumosNavigationIns="ngModel" [(ngModel)]="serviciosInventario.selectedinventario.idinsumosNavigation">
+    
+    
+    
+      <div class="row">
+        <div class="col">  
+          <button type="button" class="btn btn-primary" (click)="EditInventario(inventarioform)" >Submit</button>  
+        </div>
+    
+        <div class="col">  
+          <button type="button" class="btn btn-danger" (click)="deleteinventario(idinventario.value, inventarioform )" >Delete</button> 
+        </div>
+        
+      </div>
+
+  </form>
+
+<!--Form 2 para agregar, muestra tambien lista-->
+  <form *ngIf="showaddform" #inventarioform="ngForm" (ngSubmit)="addnewInventario(inventarioform)"> form 2
+    
+      <input type="hidden" name="idinsumos" #idinsumosInvent [(ngModel)]="serviciosInventario.selectedinventario.idinsummos">
+    
+    <div class="form-group ">
+        <label for="CantidadInsumo1">Cantidad Insumo</label>
+        <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" #cantidadInvent  [(ngModel)]="serviciosInventario.selectedinventario.cantidad">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      
+      <input type="hidden" name="idinsumosNavigation" #idinsumosNavigationIns="ngModel" [(ngModel)]="serviciosInventario.selectedinventario.idinsumosNavigation">
+    
+    
+    
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary" >Submit</button>  
+        </div>
+    
+        
+        
+      </div>
+    
+  </form>
+
+</div>
+
+
+
+
+<div class="col-3">
+<div class="form-group">
+  <label for="invetariosLista">Inventarios</label>
+  <select multiple class="form-control" id="invetariosLista">
+  <option *ngFor="let stk of allinventarios" (click)="pasarIDParaForm2(stk, stk.idinsumos)">
+     ID Inventario {{stk.id}} -- Cantidad {{stk.cantidad}}
+  </option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="exampleFormControlSelect2">Detalle</label>
+  <select multiple class="form-control" id="exampleFormControlSelect2">
+  <option >
+  {{selectecStock.nombres}} - {{selectecStock.descripcion}}
+  </option>
+  </select>
+</div>
+
+</div>
+
+</div>
+</div>
+

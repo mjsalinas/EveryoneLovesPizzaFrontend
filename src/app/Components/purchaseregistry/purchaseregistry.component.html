@@ -1,0 +1,239 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+      <div class="col">  
+        <div class="row">
+          <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Orden Compra</button>  
+         </div>
+         <div class="row">
+           <button class="btn btn-secondary" (click)="showeditform()">Editar Orden Compra</button>  
+          </div>
+       
+
+       <div class="row">
+        <button class="btn btn-primary" (click)="showdetailAddform()">Agregar Detalle Compra</button>  
+       </div>
+    
+    <div class="row">
+      <button class="btn btn-secondary" (click)="showDetailleditform()">Editar Detalle Compra<</button>  
+    </div> 
+    </div>
+ 
+
+
+<div class="col" >
+
+
+  <div *ngIf="showaddform" class="form-group">
+    <label for="ProveedorSelect">Seleccione un Proveedor</label>
+    <select multiple class="form-control" id="ProveedorSelect" >
+     
+      <option *ngFor="let prov of allproveedores" (click)="pasasidProvedor(prov.id)">
+        {{prov.nombre}}
+      </option>
+      
+    </select>
+  </div>
+
+  <form *ngIf="showedifform" #registroOrden="ngForm" (ngSubmit)="EditRegistroCompra(registroOrden)"> formOrden1
+
+    <input type="hidden" name="id" #OrdenCompraID="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.id">
+
+    <div class="form-group">
+      <label for="idproveedor"> ID Proveedor</label>
+    <input type="text" class="form-group" name="idproveedor" #idProveedorOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.idproveedor">
+    </div>
+
+    <div class="form-group">
+      <label for="FechaIngreso1">Fecha Compra</label>
+      <input type="text" class="form-control" name="fechaCompra" #fechaCompraOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.fechaCompra">  
+   </div>
+
+   <div class="form-group">
+    <label for="FechaIngreso1">Fecha Ingreso</label>
+    <input type="text" class="form-control" name="fechaingreso" #fechaingresoOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.fechaingreso">  
+   </div>
+
+ 
+      <input type="hidden" name="idproveedorNavigation" #idproveedorNavigationOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.idproveedorNavigation">
+
+      
+      <input type="hidden" name="detalleCompra" #detalleCompraOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.detalleCompra">
+
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary ">Submit</button>  
+        </div>
+    
+        <div class="col">  
+          <button type="button" class="btn btn-danger" (click)="deleteOrden(OrdenCompraID.value, registroOrden)" >Delete</button> 
+         
+        </div>
+        
+      </div>
+
+
+  </form>
+
+  
+  <form *ngIf="showaddform" #registroOrden="ngForm" (ngSubmit)="AddRegistroCompra(registroOrden)"> formOrden2
+
+
+    
+    <input type="hidden" name="idproveedor" #proveedorID="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.IDProveedor">
+
+    
+    <div class="form-group">
+      <label for="FechaIngreso1">Fecha Compra</label>
+      <input type="date" class="form-control" name="fechaCompra" #fechaCompraOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.fechaCompra">  
+   </div>
+
+   <div class="form-group">
+    <label for="FechaIngreso1">Fecha Ingreso</label>
+    <input type="date" class="form-control" name="fechaingreso" #fechaingresoOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.fechaingreso">  
+   </div>
+
+ 
+      <input type="hidden" name="idproveedorNavigation" #idproveedorNavigationOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.idproveedorNavigation">
+
+      
+      <input type="hidden" name="detalleCompra" #detalleCompraOrden="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchace.detalleCompra">
+
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary ">Submit</button>  
+        </div>
+    
+        
+      </div>
+
+
+  </form>
+
+
+ <!--forms de detalle registros FORM 1-->
+
+ 
+
+<div *ngIf="showaddformDetalles" class="form-group">
+  <label for="UsuarioAuth1">Autorizado Por:</label>
+  <select multiple class="form-control" id="UsuarioAuth1">
+    <option *ngFor="let emps of allempleado" (click)="pasarAutorizadopor(emps.correo)" >
+      {{emps.nombre}} {{emps.apellido}} 
+
+    </option>
+    
+    
+  </select>
+</div>
+
+<div *ngIf="showaddformDetalles" class="form-group">
+  <label for="UsuarioAuth1">Insumo :</label>
+  <select multiple class="form-control" id="UsuarioAuth1">
+    <option *ngFor="let insum of allInsumos" (click)="pasarIDUnsumo(insum.id)">
+      {{insum.nombres}} {{insum.descripcion}} 
+
+    </option>
+    
+    
+  </select>
+</div>
+
+  <form *ngIf="showaddformDetalles" #registrydetailedit="ngForm" (ngSubmit)="EditdetailRegistry(registrydetailedit)">
+
+
+    <input type="hidden" name="id" #idDetallecompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.id">
+
+    
+    <input type="hidden" name="idordenCompra" #idordenCompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idordenCompra">
+
+    <input type="hidden" name="idinsumos" #idinsumos="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idinsumos">
+
+    <input type="hidden" name="autorizadaPor" #autorizadaPor="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.autorizadaPor">
+
+
+    <div class="form-group ">
+      <label for="idInsumoCompraDetalle">Precio Unitario</label>
+      <input type="text" class="form-control" placeholder="Precio Unitario" name="precioUnitario" #precioUnitario="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.precioUnitario">
+     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="UnidadMedidaVenta1">Seleccione Unidad de Medida:</label>
+      <select class="form-control" name="unidadMedida" #unidadMedidaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.unidadMedida">
+        <option> </option>
+        <option>Lbs.</option>
+        <option>Fl. Oz</option>
+        <option>Litros</option>
+        <option>Onz.</option>
+        <option>Kgs.</option>
+        </select>
+      </div>
+   
+
+    <div class="form-group ">
+      <label for="ordenCompras#1">Cantidad Facturado</label>
+      <input type="text" class="form-control" placeholder="Cantidad Facturado" ame="cantidadFacturada" #cantidadFacturadaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.cantidadFacturada">
+     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary ">Submit</button>  
+        </div>
+    
+        <div class="col">  
+            <button type="submit" class="btn btn-danger ">Delete</button> 
+          </div>
+
+        
+    </div> 
+  </form>
+
+
+<!--forms de detalle registros FORM 2-->
+
+
+</div>
+
+<div class="col">
+
+  <div class="row">
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Detalle Ordenes</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+      
+          <option *ngFor="let orden of purchaseorder" (click)="addtoOrdenForm(orden)">
+         
+          Orden: {{orden.id}}
+         
+        </option>
+        
+        </select>
+    </div>
+  </div>
+
+
+  
+  <div class="row">
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Usuarios Autorizados: </label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+        
+          
+          <option *ngFor="let purch of purchasereg"  (click)="fillform(purch.id, purch.idordenCompra)">
+         
+          ID Detalle: {{purch.id}} ID de Compra:  {{purch.idordenCompra}}
+         
+        </option>
+        
+        </select>
+    </div>
+  </div>
+  
+
+</div>
+</div>
+</div>
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login V12</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Material Design Bootstrap -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <!-- JQuery -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id ="bg"> 
+
+    <div style="width: 22%; margin-left: 40%; padding-top: 13%;">
+
+    <div class="tabs effect-4" >
+      <!-- tab-title -->
+      <input type="radio" id="tab-1" name="tab-effect-4" checked="checked" />
+      <span> <i class="fa fa-home"></i><span>Iniciar Sesion</span> </span>
+
+      <input type="radio" id="tab-2" name="tab-effect-4" />
+      <span> <i class="fa fa-cog"></i><span>Registrarse</span> </span>
+      <!-- tab-content -->
+      <div class="tab-content">
+        <section id="tab-item-1">
+          <form ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email </label>
+              <input
+                ngModel name ="Correo" 
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Contraseña</label>
+              <input
+                ngModel name="Contraseña"
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            <div class="form-group row">
+               </div>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block">
+              Iniciar Sesion
+            </button>
+          </form>
+        </section>
+        <section id="tab-item-2">
+          <form ngNativeValidate #r="ngForm" (ngSubmit)="registrar(r)">
+            <div class="input-group" style="padding-bottom: 15px;">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Nombre y Apellido</span>
+              </div>
+              <input ngModel name="Nombre" type="text" aria-label="First name" class="form-control" />
+              <input ngModel name="Apellido" type="text" aria-label="Last name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input
+                ngModel name="Correo"
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Contraseña</label>
+              <input
+                ngModel name="Contraseña"
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Telefono</label>
+              <input
+              ngModel name="Telefono"
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div class="form-group" style="padding-bottom: 15px;">
+              <label for="exampleInputPassword1">Direccion</label>
+              <input
+              ngModel name="Direccion"
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block">
+              Registrarse
+            </button>
+          </form>
+        </section>
+      </div>
+    </div>
+    </div>
+  </div>
+  </body>
+
+</html>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

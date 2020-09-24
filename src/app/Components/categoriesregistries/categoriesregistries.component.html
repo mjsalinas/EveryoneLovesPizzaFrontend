@@ -1,0 +1,73 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+        <div class="col-2 mr-5">  
+            <div class="row">
+              <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Categoria</button>  
+             </div>
+             <div class="row">
+               <button class="btn btn-secondary" (click)="showeditform()">Editar Categoria</button>  
+              </div>
+           </div>
+
+
+<div class="col-4">
+    <form *ngIf="showedifform" #categoriasform="ngForm" (ngSubmit)="EditCategorias(categoriasform)">
+        <input type="hidden" name="id" #idcategoria="ngModel" [(ngModel)]="catservices.selectedcategory.id">
+    <div class="form-group ">
+        <label for="NameCategory1">Nombre Categoria</label>
+        <input type="text" class="form-control" placeholder="Nombre" name="nombre" #NameCategory="ngModel" [(ngModel)]="catservices.selectedcategory.nombre" >
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <input type="hidden" name="categoryinsumo" #catinsumo="ngModel" [(ngModel)]="catservices.selectedcategory.insumos">
+     
+    
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary " >Submit</button>  
+        </div>
+    
+        <div class="col">  
+          <button type="button" class="btn btn-danger" (click)="deletecategory(categoriasform, idcategoria.value)" >Delete</button> 
+        </div>
+        
+    </div>
+  
+  </form>
+
+
+
+<!--Second form to add-->
+
+  <form *ngIf="showaddform" #categoriasform="ngForm" (ngSubmit)="addnewCategorias(categoriasform)">
+   
+    <div class="form-group ">
+        <label for="NameCategory1">Nombre Categoria</label>
+        <input type="text" class="form-control" placeholder="Nombre" name="nombre" #NameCategory="ngModel" [(ngModel)]="catservices.selectedcategory.nombre" >
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+     
+    
+      <button type="submit" class="btn btn-primary ">Submit</button>
+  
+  </form>
+
+</div>
+
+<div class="col-4">
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Categorias</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option *ngFor="let cat of allcategorias" (click)="addtoform(cat)" >
+            {{cat.nombre}}
+        </option>
+        
+        </select>
+    </div>
+
+
+</div>
+</div>
+</div>
+

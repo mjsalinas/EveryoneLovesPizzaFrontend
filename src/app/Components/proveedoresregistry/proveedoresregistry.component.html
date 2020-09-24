@@ -1,0 +1,109 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+
+    
+<div class="col-2 mr-5">  
+ <div class="row">
+   <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Proveedor</button>  
+  </div>
+  <div class="row">
+    <button class="btn btn-secondary" (click)="showeditform()">Editar Proveedor</button>  
+   </div>
+</div>
+ 
+<div class="col-4">
+<form *ngIf="showedifform" #proveedorform="ngForm" (ngSubmit)="EditProveedor(proveedorform)"> 
+      <input type="hidden" name="id" #idprovider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.id">
+    <div class="form-group ">
+        <label for="NameProvider1">Nombre Proveedor</label>
+        <input  type="text" class="form-control" placeholder="Nombre" name="nombre" #NameProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.nombre" >
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="PhoneProvider1">Telefono Proveedor</label>
+        <input type="text" class="form-control" placeholder="Numero Telefono"  name="telefono" #telefonoProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.telefono">
+       
+      </div>
+
+      <div class="form-group ">
+        <label for="EmailProvider1">Correo Proveedor</label>
+        <input type="email" class="form-control" placeholder="Email" name="correo" #emailProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.correo">
+      
+      </div>
+
+      <div class="row">
+            <div class="col">  
+              <button type="submit" class="btn btn-primary " >Submit</button>  
+            </div>
+        
+            <div class="col">  
+              <button type="button" class="btn btn-danger" (click)="deleteproveedor(proveedorform, idprovider.value)" >Delete</button> 
+            </div>
+            
+        </div>
+       
+     
+  </form>
+
+<!--Second form add new provider--> 
+  <form *ngIf="showaddform" #proveedoraddform="ngForm" (ngSubmit)="AddNewProveedor(proveedoraddform)">
+   
+  <div class="form-group ">
+      <label for="NameProvider1">Nombre Proveedor</label>
+      <input  type="text" class="form-control" placeholder="Nombre" name="nombre" #NameProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.nombre" >
+     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group ">
+      <label for="PhoneProvider1">Telefono Proveedor</label>
+      <input type="text" class="form-control" placeholder="Numero Telefono"  name="telefono" #telefonoProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.telefono">
+     
+    </div>
+
+    <div class="form-group ">
+      <label for="EmailProvider1">Correo Proveedor</label>
+      <input type="email" class="form-control" placeholder="Email" name="correo" #emailProvider="ngModel" [(ngModel)]="proveedoresservice.selectedproveedor.correo">
+    
+    </div>
+
+    <div class="row">
+          <div class="col">  
+            <button type="submit" class="btn btn-primary " >Submit</button>  
+          </div>
+      
+          
+         
+      </div>
+     
+      
+</form>
+
+</div>
+
+        <div class="col-5" >
+          
+            <div class="form-group form-group-lg">
+                <label for="exampleFormControlSelect2" name="displayprvo">Proveedores Registrados</label>
+                <select multiple class="form-control "  id="exampleFormControlSelect2">
+                    <option *ngFor="let allprov of allproveedores" (click)="addtoform(allprov)">
+                      
+                    Nombre: {{allprov.nombre}} - Cel: {{allprov.telefono}}
+                 
+                    </option>
+                </select>
+              </div>
+            
+              
+
+
+        </div>
+</div>
+</div>
+
+
+
+
+
+

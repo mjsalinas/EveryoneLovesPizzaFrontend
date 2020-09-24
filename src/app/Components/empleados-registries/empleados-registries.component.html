@@ -1,0 +1,175 @@
+<div class="container p-3">
+    <div class="row justify-content-center">
+
+        <div class="col-2 mr-5">  
+            <div class="row">
+              <button class="btn btn-primary" (click)="hiddeeditform()">Agregar Empleado</button>  
+             </div>
+             <div class="row">
+               <button class="btn btn-secondary" (click)="showeditform()">Editar Empleado</button>  
+              </div>
+           </div>
+
+
+        <div class="col-4">
+
+    <form *ngIf="showedifform" #employeeform="ngForm" (ngSubmit)="EditEmployee(employeeform)">
+        <input type="hidden" name="id" #idemployee="ngModel" [(ngModel)]="employeeserv.selectedemployee.id">
+         <div class="form-group ">
+        <label for="nombreemp">Nombre Empleado</label>
+        <input type="text" class="form-control" placeholder="Nombre" name="nombre" #nameemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.nombre">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="apellidoemp">Apellido Empleado</label>
+        <input type="text" class="form-control" placeholder="Apellido" name="apellido" #lastnameemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.apellido">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group">
+        <label for="contraemp">Contraseña Empleado (No se puede ingresar sin contraseña)</label>
+        <input type="password" class="form-control" placeholder="Password" name="contraseña" #passemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.contrasenia">
+         <small id="emailHelp" class="form-text text-muted">No se puede ingresar sin contraseña</small>
+      </div>
+
+      <div class="form-group ">
+        <label for="correoemp">Correo Empleado</label>
+        <input type="text" class="form-control" placeholder="ID Funcion" name="correo" #correoemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.correo">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="idfuncionemp">ID Funcion Empleado</label>
+        <input type="text" class="form-control" placeholder="ID Funcion" name="idfuncion" #idfuncionemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.idfuncion">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="telefonoemp">Telefono Empleado</label>
+        <input type="text" class="form-control" placeholder="Telefono" name="telefono" #telefonoemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.telefono">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="statusoemp">Status Empleado</label>
+        <input type="text" class="form-control" placeholder="Status" name="status" #statusemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.status">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group ">
+        <label for="isSuperAdminemp">Es Super Admin?</label>
+        <input type="text" class="form-control" placeholder="Super Admin?" name="isSuperAdmin" #isSuperAdminempemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.isSuperAdmin">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <input type="hidden" name="idfuncionNavigation" #idfuncionNavigationEmp="ngModel" [(ngModel)]="employeeserv.selectedemployee.idfuncionNavigation">
+
+      <input type="hidden" name="ordenVenta" #ordenVentaEmp="ngModel" [(ngModel)]="employeeserv.selectedemployee.ordenVenta">
+
+            
+    
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary " >Submit</button>  
+        </div>
+    
+        <div class="col">  
+          <button type="button" class="btn btn-danger" (click)="deleteempleado(employeeform, idemployee.value)" >Delete</button> 
+        </div>
+        
+      </div>
+
+    
+  </form>
+
+
+
+<!--Form dos-->
+  <form *ngIf="showaddform" #employeeaddform="ngForm" (ngSubmit)="AddNewEmp(employeeaddform)">
+         <div class="form-group ">
+    <label for="nombreemp">Nombre Empleado</label>
+    <input type="text" class="form-control" placeholder="Nombre" name="nombre" #nameemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.nombre">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="apellidoemp">Apellido Empleado</label>
+    <input type="text" class="form-control" placeholder="Apellido" name="apellido" #lastnameemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.apellido">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="contraemp">Contraseña Empleado (No se puede ingresar sin contraseña)</label>
+    <input type="password" class="form-control" placeholder="Password" name="contraseña" #passemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.contrasenia">
+    <small id="emailHelp" class="form-text text-muted">(No se puede ingresar sin contraseña)</small>
+  </div>
+
+  <div class="form-group ">
+    <label for="correoemp">Correo Empleado</label>
+    <input type="text" class="form-control" placeholder="ID Funcion" name="correo" #correoemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.correo">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="idfuncionemp">ID Funcion Empleado</label>
+    <input type="text" class="form-control" placeholder="ID Funcion" name="idfuncion" #idfuncionemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.idfuncion">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="telefonoemp">Telefono Empleado</label>
+    <input type="text" class="form-control" placeholder="Telefono" name="telefono" #telefonoemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.telefono">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="statusoemp">Status Empleado</label>
+    <input type="text" class="form-control" placeholder="Status" name="status" #statusemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.status">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group ">
+    <label for="isSuperAdminemp">Es Super Admin?</label>
+    <input type="text" class="form-control" placeholder="Super Admin?" name="isSuperAdmin" #isSuperAdminempemp="ngModel" [(ngModel)]="employeeserv.selectedemployee.isSuperAdmin">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <input type="hidden" name="idfuncionNavigation" #idfuncionNavigationEmp="ngModel" [(ngModel)]="employeeserv.selectedemployee.idfuncionNavigation">
+
+  <input type="hidden" name="ordenVenta" #ordenVentaEmp="ngModel" [(ngModel)]="employeeserv.selectedemployee.ordenVenta">
+
+        
+
+  <div class="row">
+    <div class="col">  
+      <button type="submit" class="btn btn-primary " >Submit</button>  
+    </div>
+
+    
+    
+</div>
+
+
+</form>
+
+
+</div>
+
+<div class="col-4">
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Empleados</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option *ngFor="let emps of allemployees" (click)="addtoform(emps)">
+            {{emps.nombre}} {{emps.apellido}} {{emps.telefono}}
+        </option>
+        
+        </select>
+    </div>
+
+
+</div>
+</div>
+</div>
+
