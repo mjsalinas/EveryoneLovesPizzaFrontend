@@ -1,3 +1,4 @@
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminMastersComponent } from './admin-masters/admin-masters.component';
@@ -54,6 +55,9 @@ const routes: Routes = [
     canActivate: [SuperAdminGuard],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'dashboard', component: SuperAdminDashboardComponent
+  }
  
 ];
 

@@ -22,6 +22,18 @@ import { PurchaseRegistriesService } from './Services/purchase-registries.servic
 import { MasterNavitationSuperadminComponent } from './Components/master-navitation-superadmin/master-navitation-superadmin.component';
 import { EmpleadosRegistriesComponent } from './Components/empleados-registries/empleados-registries.component';
 import { ClientesRegistriesComponent } from './Components/clientes-registries/clientes-registries.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+
+/*  Material Modules  */
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -39,14 +51,22 @@ import { ClientesRegistriesComponent } from './Components/clientes-registries/cl
     UserComponent,
     HomepageComponent,
     SuperAdminDashboardComponent,
-    AdminMastersComponent
+    AdminMastersComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     UserComponent,
