@@ -1,3 +1,4 @@
+import { ClientsService } from './../services/clients.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class SuperAdminDashboardComponent implements OnInit {
 
+  clientestotales;
+
   constructor(
     public router: Router,
+    public clientesService: ClientsService
 
   ) { }
 
@@ -22,5 +26,11 @@ export class SuperAdminDashboardComponent implements OnInit {
     // }
     localStorage.clear();
     this.router.navigate(['/user']);
+  }
+
+  obtenerClientes(){
+    this.clientesService.getTotalClients().subscribe(data => {
+      this.clientestotales = data;
+    })
   }
 }

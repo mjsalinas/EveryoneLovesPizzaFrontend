@@ -23,6 +23,10 @@ export class ClientsService {
     return this.http.get(`${this.API_URI}/clientes/${id}`);
   }
 
+  getTotalClients(){
+    return this.http.get<cliente>(this.API_URI + '/clientes/getTotalClients');
+  }
+
   saveNewClient(client: cliente){
     return this.http.post(`${this.API_URI}/clientes/`, client);
   }
