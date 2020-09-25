@@ -18,6 +18,7 @@ export class OrdenCompra {
 export class detalleOrden {
 
     constructor(id=0, IDOrdenCompra=0, IDInsumo=0,PrecioUnitario=0,unidadMed=" ", totalfacturado=0, autorizadopor=" "){
+        
         this.id=id;
         this.IDOrdenCompra=IDOrdenCompra;
         this.IDInsumo = IDInsumo;

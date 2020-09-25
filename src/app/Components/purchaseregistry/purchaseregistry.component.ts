@@ -35,6 +35,8 @@ export class PurchaseregistryComponent implements OnInit {
   selectedPurchaceID: number;
   selectedOrderID: number;
   selectedProveedorID: number;
+
+
   
 
   //variablesdePsarOrden
@@ -126,7 +128,29 @@ export class PurchaseregistryComponent implements OnInit {
 
   EditdetailRegistry(){
 
+  
   }
+
+  addeditform(form: NgForm){
+    
+    this.purchaseeegistryservice.selectedPurchacedetail.IDInsumo = this.idsumimo;
+    this.purchaseeegistryservice.selectedPurchacedetail.autorizadopor = this.emailautorizando;
+    this.purchaseeegistryservice.selectedPurchacedetail.IDOrdenCompra = this.orderIDPasar;
+
+
+    this.purchaseeegistryservice.savePurchaseDetail(form.value).subscribe(
+      res=>{
+        console.log('res :>> ', res);
+      }
+    )
+    console.log('form :>> ', form.value);
+
+
+  }
+
+
+
+
 
   pasasidProvedor(id: number){
    
@@ -165,6 +189,8 @@ export class PurchaseregistryComponent implements OnInit {
   addtoOrdenForm(ord: OrdenCompra){
     this.purchaseeegistryservice.selectedPurchace = ord;
     this.orderIDPasar = ord.id;
+    console.log('orderIDPasar :>> ', this.orderIDPasar);
+    
   }
 
   deleteOrden(id: string, form: NgForm){
@@ -180,10 +206,19 @@ export class PurchaseregistryComponent implements OnInit {
 
   pasarAutorizadopor(email: string){
     this.emailautorizando=email;
+    console.log(' emailautorizando:>> ', this.emailautorizando );
+    
   }
   pasarIDUnsumo(id: number){
     this.idsumimo = id;
+    console.log('idsumimo :>> ', this.idsumimo);
+    
   }
+
+  
+
+
+
   
 
 

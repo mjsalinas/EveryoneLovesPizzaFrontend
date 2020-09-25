@@ -119,7 +119,7 @@
   <label for="UsuarioAuth1">Autorizado Por:</label>
   <select multiple class="form-control" id="UsuarioAuth1">
     <option *ngFor="let emps of allempleado" (click)="pasarAutorizadopor(emps.correo)" >
-      {{emps.nombre}} {{emps.apellido}} 
+      {{emps.nombre}} {{emps.apellido}} {{emps.correo}}
 
     </option>
     
@@ -139,28 +139,26 @@
   </select>
 </div>
 
-  <form *ngIf="showaddformDetalles" #registrydetailedit="ngForm" (ngSubmit)="EditdetailRegistry(registrydetailedit)">
+  <form *ngIf="showaddformDetalles" #registrydetailsadd="ngForm" (ngSubmit)="addeditform(registrydetailsadd)"> form 1 detalle
 
 
-    <input type="hidden" name="id" #idDetallecompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.id">
 
-    
-    <input type="hidden" name="idordenCompra" #idordenCompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idordenCompra">
+    <input type="hidden" name="idordenCompra" #idordenCompra1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idordenCompra">
 
-    <input type="hidden" name="idinsumos" #idinsumos="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idinsumos">
+    <input type="hidden" name="idinsumos" #idinsumos1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idinsumos">
 
-    <input type="hidden" name="autorizadaPor" #autorizadaPor="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.autorizadaPor">
+    <input type="hidden" name="autorizadaPor" #autorizadaPor1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.autorizadaPor">
 
 
     <div class="form-group ">
       <label for="idInsumoCompraDetalle">Precio Unitario</label>
-      <input type="text" class="form-control" placeholder="Precio Unitario" name="precioUnitario" #precioUnitario="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.precioUnitario">
+      <input type="text" class="form-control" placeholder="Precio Unitario" name="precioUnitario" #precioUnitario1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.precioUnitario">
      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
     </div>
 
     <div class="form-group">
       <label for="UnidadMedidaVenta1">Seleccione Unidad de Medida:</label>
-      <select class="form-control" name="unidadMedida" #unidadMedidaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.unidadMedida">
+      <select class="form-control" name="unidadMedida" #unidadMedidaDetalle1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.unidadMedida">
         <option> </option>
         <option>Lbs.</option>
         <option>Fl. Oz</option>
@@ -173,9 +171,12 @@
 
     <div class="form-group ">
       <label for="ordenCompras#1">Cantidad Facturado</label>
-      <input type="text" class="form-control" placeholder="Cantidad Facturado" ame="cantidadFacturada" #cantidadFacturadaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.cantidadFacturada">
+      <input type="text" class="form-control" placeholder="Cantidad Facturado" name="cantidadFacturada" #cantidadFacturadaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.cantidadFacturada">
      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
     </div>
+
+    <input type="hidden" name="idinsumosNavigation" #idinsumosNavigation1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idinsumosNavigation">
+    <input type="hidden" name="idordenCompraNavigation" #idordenCompraNavigation1="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idordenCompraNavigation">
 
     
       <div class="row">
@@ -193,6 +194,60 @@
 
 
 <!--forms de detalle registros FORM 2-->
+
+
+<form *ngIf="showeditformDetalles" #registrydetailedit="ngForm" (ngSubmit)="EditdetailRegistry(registrydetailedit)"> detalle form 2
+
+
+  <input type="hidden" name="id" #idDetallecompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.id">
+
+  
+  <input type="hidden" name="idordenCompra" #idordenCompra="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idordenCompra">
+
+  <input type="hidden" name="idinsumos" #idinsumos="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.idinsumos">
+
+  <input type="hidden" name="autorizadaPor" #autorizadaPor="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.autorizadaPor">
+
+
+  <div class="form-group ">
+    <label for="idInsumoCompraDetalle">Precio Unitario</label>
+    <input type="text" class="form-control" placeholder="Precio Unitario" name="precioUnitario" #precioUnitario="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.precioUnitario">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group">
+    <label for="UnidadMedidaVenta1">Seleccione Unidad de Medida:</label>
+    <select class="form-control" name="unidadMedida" #unidadMedidaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.unidadMedida">
+      <option> </option>
+      <option>Lbs.</option>
+      <option>Fl. Oz</option>
+      <option>Litros</option>
+      <option>Onz.</option>
+      <option>Kgs.</option>
+      </select>
+    </div>
+ 
+
+  <div class="form-group ">
+    <label for="ordenCompras#1">Cantidad Facturado</label>
+    <input type="text" class="form-control" placeholder="Cantidad Facturado" ame="cantidadFacturada" #cantidadFacturadaDetalle="ngModel" [(ngModel)]="purchaseeegistryservice.selectedPurchacedetail.cantidadFacturada">
+   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  
+    <div class="row">
+      <div class="col">  
+        <button type="submit" class="btn btn-primary ">Submit</button>  
+      </div>
+  
+      <div class="col">  
+          <button type="submit" class="btn btn-danger ">Delete</button> 
+        </div>
+
+      
+  </div> 
+</form>
+
 
 
 </div>
