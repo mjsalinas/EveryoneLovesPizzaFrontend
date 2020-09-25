@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _swal from 'sweetalert';
@@ -13,6 +13,8 @@ import { UserService } from '../services/user.service';
 // tslint:disable: variable-name
 const swal: SweetAlert = _swal as any;
 
+
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -24,10 +26,13 @@ export class UserComponent implements OnInit {
   email: string;
   recuerdame = false;
 
+  showregistry1: boolean;
+  showlogin: boolean = true; 
+
   constructor(
     public router: Router,
     public _usuarioService: UserService,
-    public _loginService: LoginService
+    public _loginService: LoginService,
   ) {}
 
   ngOnInit() {
@@ -62,6 +67,17 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
+  showregistry(){
+    this.showregistry1 = true;
+    this.showlogin = false;
+  }
+
+  showloginf(){
+    this.showregistry1 = false;
+    this.showlogin = true;
+  }
+
   registrar(forma: NgForm) {
     if (forma.invalid) {
       return;

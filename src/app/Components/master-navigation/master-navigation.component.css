@@ -1,0 +1,8 @@
+#navStyle:hover {
+    background: rgb(0,77,64);
+    background: linear-gradient(90deg, rgba(0,77,64,1) 0%, rgba(0,120,106,1) 50%, rgba(0,77,64,1) 100%);
+}
+a {
+    border-color: transparent;
+
+}

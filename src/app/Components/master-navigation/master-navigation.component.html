@@ -1,22 +1,22 @@
-<div class="container" style="margin-top: 100px">
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<div class="container" style="margin-top: 100px; background-color: #004d40;">
+<div class="nav nav-tabs"  style="display: grid; grid-template-columns: 20% 20% 20% 20% 20%" id="myTab" role="tablist">
+  <div class="nav-item" id="navStyle" style="height: 50px; text-align: center; padding-top: 5px;" role="presentation">
+    <a class="nav-link" id="home-tab" style=" color:white;" data-toggle="tab" href="navigation-admin/purchase-registry" role="tab" aria-controls="home" aria-selected="true">Registro Compras</a>
+    </div>
+    <div class="nav-item" style="height: 50px; text-align: center; padding-top: 5px;"  role="presentation">
+      <a class="nav-link" id="profile-tab" style=" color:white;" data-toggle="tab" href="navigation-admin/insumosregistry" role="tab" aria-controls="profile" aria-selected="false">Insumos</a>
+    </div>
  
-    <li class="nav-item" role="presentation">
-    <a class="nav-link" id="home-tab" data-toggle="tab" href="navigation-admin/purchase-registry" role="tab" aria-controls="home" aria-selected="true">Registro Compras</a>
+  <li class="nav-item" style="height: 50px; text-align: center; padding-top: 5px;" role="presentation">
+    <a class="nav-link" id="contact-tab" style=" color:white;" data-toggle="tab" href="navigation-admin/proveedoresregistry" role="tab" aria-controls="contact" aria-selected="false">Proveedores</a>
   </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="navigation-admin/insumosregistry" role="tab" aria-controls="profile" aria-selected="false">Insumos</a>
+  <li class="nav-item" style="height: 50px; text-align: center; padding-top: 5px;" role="presentation">
+    <a class="nav-link" id="contact-tab" style=" color:white;" data-toggle="tab" href="navigation-admin/categoriesregistry" role="tab" aria-controls="contact" aria-selected="false">Categorias</a>
   </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="navigation-admin/proveedoresregistry" role="tab" aria-controls="contact" aria-selected="false">Proveedores</a>
+  <li class="nav-item" style="height: 50px; text-align: center; padding-top: 5px;" role="presentation">
+    <a class="nav-link" id="contact-tab" style=" color:white;" data-toggle="tab" href="navigation-admin/invetarioregistry" role="tab" aria-controls="contact" aria-selected="false">Inventario</a>
   </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="navigation-admin/categoriesregistry" role="tab" aria-controls="contact" aria-selected="false">Categorias</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="navigation-admin/invetarioregistry" role="tab" aria-controls="contact" aria-selected="false">Inventario</a>
-  </li>
-</ul>
+</div>
 </div>
 
 <router-outlet></router-outlet>
