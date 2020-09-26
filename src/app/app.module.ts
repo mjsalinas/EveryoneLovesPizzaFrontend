@@ -32,6 +32,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { ClientsTableComponent } from './super-admin-dashboard/clients-table/clients-table.component';
+import { EmployeesTableComponent } from './super-admin-dashboard/employees-table/employees-table.component';
 
 
 
@@ -52,7 +54,9 @@ import { MatButtonModule } from '@angular/material/button';
     HomepageComponent,
     SuperAdminDashboardComponent,
     AdminMastersComponent,
-    SidebarComponent
+    SidebarComponent,
+    ClientsTableComponent,
+    EmployeesTableComponent
   ],
   imports: [
     BrowserModule,

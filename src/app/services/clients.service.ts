@@ -16,7 +16,7 @@ export class ClientsService {
    }
 
    getClientesAll(){
-    return this.http.get(`${this.API_URI}/clientes`)
+    return this.http.get<cliente[]>(`${this.API_URI}/clientes`)
   }
 
   getClientesID(id: string){

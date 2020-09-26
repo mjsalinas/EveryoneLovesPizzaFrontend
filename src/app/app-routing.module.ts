@@ -1,3 +1,5 @@
+import { EmployeesTableComponent } from './super-admin-dashboard/employees-table/employees-table.component';
+import { ClientsTableComponent } from './super-admin-dashboard/clients-table/clients-table.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -56,7 +58,11 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'dashboard', component: SuperAdminDashboardComponent
+    path: 'dashboard', component: SuperAdminDashboardComponent,
+    children: [
+      {path: 'client-table', component: ClientsTableComponent},
+      {path: 'employees-table', component: EmployeesTableComponent}
+    ]
   }
  
 ];

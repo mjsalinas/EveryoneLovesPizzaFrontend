@@ -1,0 +1,22 @@
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empleado of empleados; let indice = index">
+                <td>{{ indice + 1 }}</td>
+                <td>{{ empleado.nombre }}{{ empleado.apellido }}</td>
+                <td>{{ empleado.correo }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>

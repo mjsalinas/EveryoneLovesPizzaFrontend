@@ -1,0 +1,22 @@
+<div class="row">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes; let indice = index">
+            <td>{{ indice + 1 }}</td>
+            <td>{{ cliente.nombre }}{{ cliente.apellido }}</td>
+            <td>{{ cliente.correo }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</div>

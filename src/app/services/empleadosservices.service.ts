@@ -16,7 +16,7 @@ export class EmpleadosservicesService {
    }
 
    getEmployeesAll(){
-    return this.http.get(`${this.API_URI}/Empleados`)
+    return this.http.get<empleado[]>(`${this.API_URI}/Empleados`)
   }
 
   getEmployeesID(id: string){
