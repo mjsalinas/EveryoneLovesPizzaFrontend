@@ -23,6 +23,10 @@ export class EmpleadosservicesService {
     return this.http.get(`${this.API_URI}/Empleados/${id}`);
   }
 
+  getAllEmployees(){
+    return this.http.get<empleado>(this.API_URI + '/empleados/getTotalEmployees');
+  }
+
   saveNewEmployee(employee: empleado){
     return this.http.post(`${this.API_URI}/Empleados/`, employee);
   }

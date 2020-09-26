@@ -34,6 +34,10 @@ export class PurchaseRegistriesService {
     return this.http.get(`${this.API_URI}/OrdenCompras/${id}`);
   }
 
+  getTotalCompras(){
+    return this.http.get(this.API_URI + '/ordencompras/gettotalpurchases');
+  }
+
 
 
   deletepurchase(id: string){

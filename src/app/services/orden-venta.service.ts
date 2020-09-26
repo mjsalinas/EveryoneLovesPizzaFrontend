@@ -15,7 +15,7 @@ export class OrdenVentaService {
 
 
   getOrders(){
-    return this.http.get<OrdenVenta[]>(this.API_URI);
+    return this.http.get<OrdenVenta[]>(this.API_URI + "/gettotalorders");
   }
 
   
